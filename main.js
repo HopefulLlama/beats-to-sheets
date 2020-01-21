@@ -47,23 +47,39 @@ class Bar {
 		var that = this
 		var point1 = this.topLeft
 		var point2 = this.bottomLeft
-		drawLine(point1, point2)
 		ctx.textAlign = "center";
-		ctx.fillText("1", point1.x , point1.y);
 
-		function addVericalLine(opacity=0.5) {
-			point1 = new Point(point1.x + (that.width / (that.noOfBeats)), point1.y)
-			point2 = new Point(point2.x + (that.width / (that.noOfBeats)), point2.y)
+		function addVericalLine(opacity) {
+			point1 = new Point(point1.x + (that.width / (that.noOfBeats + 1)), point1.y)
+			point2 = new Point(point2.x + (that.width / (that.noOfBeats + 1)), point2.y)
 			drawLine(point1, point2, opacity=opacity)
 		}
 
-		for (var i = 1; i < this.noOfBeats; i++) {
+		for (var i = 0; i < this.noOfBeats; i++) {
 			if (!(i % 4)) {
+
 				addVericalLine(1)
-				ctx.textAlign = "center";
+				ctx.font = "20px Arial";
 				ctx.fillText((i/4) + 1, point1.x , point1.y);
-			} else {
-				addVericalLine()
+
+			} else if (!((i - 1) % 4)) {
+
+				addVericalLine(0.25)
+				ctx.font = "10px Arial";
+				ctx.fillText('e', point1.x , point1.y);
+
+			} else if (!(i % 2)) {
+
+				addVericalLine(0.5)
+				ctx.font = "15px Arial";
+				ctx.fillText('+', point1.x , point1.y);
+
+			} else if (!((i - 1) % 2)) {
+
+				addVericalLine(0.25)
+				ctx.font = "10px Arial";
+				ctx.fillText('a', point1.x , point1.y);
+
 			}
 		}
 	}
@@ -74,25 +90,25 @@ class Bar {
 		drawLine(point1, point2)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
-		drawLine(point1, point2, 0.5)
+		drawLine(point1, point2, 1, 0.1)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
 		drawLine(point1, point2)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
-		drawLine(point1, point2, 0.5)
+		drawLine(point1, point2, 1, 0.1)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
 		drawLine(point1, point2)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
-		drawLine(point1, point2, 0.5)
+		drawLine(point1, point2, 1, 0.1)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
 		drawLine(point1, point2)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
-		drawLine(point1, point2, 0.5)
+		drawLine(point1, point2, 1, 0.1)
 		point1 = new Point(point1.x, point1.y + (this.height / 8))
 		point2 = new Point(point1.x + this.width, point1.y)
 		drawLine(point1, point2)
